@@ -1,17 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit'; // or createStore if using legacy Redux
 import './index.css';
-import App from './App';
+import Game from './container/Game/Game';  // Replace with your main App component
+import reducer from './reducer'; // Your combined reducers or a single reducer
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const store = configureStore({
+  reducer,  // This should be the reducer or combined reducers
+  devTools: process.env.NODE_ENV !== 'production', // This enables Redux DevTools in non-production environments
+});
+
+ReactDOM.render(
+  <Provider store={store}>  {/* Wrap your app with Provider and pass the store */}
+    <Game />                 {/* Replace <Game /> with <App /> if that's your root component */}
+  </Provider>,
+  document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);

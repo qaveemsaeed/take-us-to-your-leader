@@ -1,0 +1,1 @@
+export const skyAndGroundWidht=5000;
