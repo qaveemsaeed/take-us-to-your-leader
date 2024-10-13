@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'; // or createStore if using legacy Redux
 import './index.css';
@@ -12,11 +12,12 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production', // This enables Redux DevTools in non-production environments
 });
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'));
+
+root.render(
   <Provider store={store}>  {/* Wrap your app with Provider and pass the store */}
     <Game />                 {/* Replace <Game /> with <App /> if that's your root component */}
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
 
 reportWebVitals(console.log);

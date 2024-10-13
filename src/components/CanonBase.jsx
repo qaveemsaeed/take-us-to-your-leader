@@ -15,11 +15,11 @@ const CanonBase = (props) => {
             x: -halfBase,
             y: height,
         },
-        initialControlpoints: {
+        initialControlPoints: {
             x: 20,
             y: negativeHeight,
         },
-        endingControlPoint: {
+        endingControlPoints: {
             x: 60,
             y: negativeHeight,
         },

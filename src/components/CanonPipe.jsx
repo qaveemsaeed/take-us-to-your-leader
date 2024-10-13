@@ -1,23 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { pathFromBezierCurve } from '../utils/formulas'
-const CanonPipe = (prpos) => {
-    const canonPipeStyle={
-        fill:'#999',
+const CanonPipe = (props) => {
+    const canonPipeStyle = {
+        fill: '#999',
         stroke: '#666',
         strokeWidht: '2px',
     }
-    const tranform = `rotate(${this.props.rotation},0,0)`
+    const tranform = `rotate(${props.rotation},0,0)`
 
-    const muzzleWidht=40;
-    const halfMuzzle=20;
-    const height=100;
-    const yBasis=70;
+    const muzzleWidht = 40;
+    const halfMuzzle = 20;
+    const height = 100;
+    const yBasis = 70;
+
+    const cubicBezierCurve = {
+        initialAxis: {
+            x: -halfMuzzle,
+            y: -yBasis,
+        },
+        initialControlPoints: {
+            x: -40,
+            y: height * 1.7,
+        },
+        endingControlPoints: {
+            x: 80,
+            y: height * 1.7,
+        },
+        endingAxis: {
+            x: muzzleWidht,
+            y: 0,
+        },
+    };
+
     return (
-        <div>
-
-        </div>
+        <g transform={tranform}>
+            <path style={canonPipeStyle}
+                d={pathFromBezierCurve(cubicBezierCurve)} />
+            <line
+                x1={-halfMuzzle}
+                y1={-yBasis}
+                x2={halfMuzzle}
+                y2={-yBasis}
+                style={canonPipeStyle} />
+        </g>
     )
 }
 
-export default CanonPipe
+CanonPipe.protoTypes = {
+    rotation: PropTypes.number.isRequired,
+}
+
+export default CanonPipe;
