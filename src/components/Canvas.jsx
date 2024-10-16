@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
-import CannonBase from './CanonBase';
-import CannonPipe from './CanonPipe';
+import CanonBase from './CanonBase';
+import CanonPipe from './CanonPipe';
+import CanonBall from './CanonBall';
+import CurrentScore from './CurrentScore';
 
 const Canvas = (props) => {
     const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
@@ -16,8 +18,10 @@ const Canvas = (props) => {
         >
             <Sky />
             <Ground />
-            <CannonPipe rotation={props.angle} />
-            <CannonBase />
+            <CanonPipe rotation={props.angle} />
+            <CanonBase />
+            <CanonBall position={{x:0, y:-200,}} />
+            <CurrentScore score={80}/>
         </svg>
     );
 };
