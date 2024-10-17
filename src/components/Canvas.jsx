@@ -6,6 +6,7 @@ import CanonBase from './CanonBase';
 import CanonPipe from './CanonPipe';
 import CanonBall from './CanonBall';
 import CurrentScore from './CurrentScore';
+import FlyingObject from './FlyingObject';
 
 const Canvas = (props) => {
     const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
@@ -22,6 +23,8 @@ const Canvas = (props) => {
             <CanonBase />
             <CanonBall position={{x:0, y:-200,}} />
             <CurrentScore score={80}/>
+            <FlyingObject position={{x:700,y:-800,}}/>
+            <FlyingObject position={{x:-700,y:-800,}}/>
         </svg>
     );
 };
